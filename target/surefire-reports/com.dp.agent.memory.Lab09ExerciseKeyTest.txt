@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.dp.agent.memory.Lab09ExerciseKeyTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.dp.agent.memory.Lab09ExerciseKeyTest

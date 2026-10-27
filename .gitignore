@@ -1,0 +1,25 @@
+# ---- 构建产物（Maven）----
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# ---- IDE（IntelliJ IDEA / Eclipse / VS Code）----
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+
+# ---- 运行时日志与崩溃转储 ----
+logs/
+*.log
+hs_err_pid*
+
+# ---- 操作系统杂项 ----
+.DS_Store
+Thumbs.db
+Desktop.ini
