@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.dp.agent.core.tool.GuardedToolExecutorTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.147 s -- in com.dp.agent.core.tool.GuardedToolExecutorTest

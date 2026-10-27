@@ -1,0 +1,115 @@
+/* ==========================================================================
+   DP Agent — 数据格式化工具（JSON / XML）
+   对话框外壳样式复用 settings.css 的 .dialog-pane 规则，这里只管内容区。
+   ========================================================================== */
+
+.format-root {
+    -fx-padding: 12 4 2 4;
+    -fx-background-color: -app-bg;
+}
+
+.format-bar {
+    -fx-padding: 0 0 2 0;
+}
+
+.format-kind-chip {
+    -fx-background-color: -app-accent-soft;
+    -fx-text-fill: -app-accent;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 999px;
+    -fx-padding: 4 12 4 12;
+}
+
+.format-kind-chip.unknown {
+    -fx-background-color: -app-surface-2;
+    -fx-text-fill: -app-muted;
+}
+
+.format-caption {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 2 0 2;
+}
+
+.format-area {
+    -fx-font-family: "Consolas", "Cascadia Mono", monospace;
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -app-text;
+    -fx-prompt-text-fill: -app-faint;
+    -fx-control-inner-background: -app-surface;
+    -fx-background-color: -app-surface;
+    -fx-border-color: -app-border;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-padding: 2;
+}
+
+.format-area:focused {
+    -fx-border-color: -app-accent;
+}
+
+.format-area .content {
+    -fx-background-color: -app-surface;
+    -fx-background-radius: 10px;
+}
+
+.format-area .scroll-pane,
+.format-area .scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.format-output {
+    -fx-control-inner-background: -app-surface-2;
+}
+
+.format-output .content {
+    -fx-background-color: -app-surface-2;
+}
+
+.format-status {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+    -fx-padding: 0 2 4 2;
+}
+
+.format-status.ok {
+    -fx-text-fill: #10b981;
+}
+
+.format-status.error {
+    -fx-text-fill: -app-danger;
+}
+
+/* 内容区按钮需要压过 settings.css 的 .dialog-pane .button（特异性相同，靠后加载生效） */
+.format-root .primary-button {
+    -fx-background-color: linear-gradient(to right, #3b82f6, #4f46e5);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 7 20 7 20;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.format-root .primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #2563eb, #4338ca);
+}
+
+.format-root .ghost-button {
+    -fx-background-color: -app-surface;
+    -fx-text-fill: -app-text;
+    -fx-padding: 7 14 7 14;
+    -fx-background-radius: 10px;
+    -fx-border-color: -app-border;
+    -fx-border-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.format-root .ghost-button:hover {
+    -fx-background-color: -app-accent-soft;
+    -fx-text-fill: -app-accent;
+    -fx-border-color: transparent;
+}

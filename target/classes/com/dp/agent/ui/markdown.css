@@ -1,0 +1,165 @@
+/* ==========================================================================
+   DP Agent — Markdown 渲染样式
+   与 app.css 的主题变量配套；由 MarkdownRenderer / InlineRenderer 挂载对应类名。
+   ========================================================================== */
+
+.md-text {
+    -fx-fill: -app-text;
+}
+
+.md-strong {
+    -fx-font-weight: bold;
+}
+
+.md-em {
+    -fx-font-style: italic;
+}
+
+.md-strike {
+    -fx-strikethrough: true;
+}
+
+/* 行内代码：胶囊底色（Label 节点） */
+.md-code-inline {
+    -fx-background-color: -app-surface-2;
+    -fx-background-radius: 5px;
+    -fx-padding: 0 5 1 5;
+    -fx-text-fill: -app-code;
+    -fx-font-family: "Consolas", "Cascadia Mono", monospace;
+    -fx-font-size: 12px;
+}
+
+.md-link {
+    -fx-fill: -app-accent;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.md-h1 {
+    -fx-font-size: 20px;
+}
+
+.md-h2 {
+    -fx-font-size: 17px;
+}
+
+.md-h3 {
+    -fx-font-size: 15px;
+}
+
+.md-h4,
+.md-h5,
+.md-h6 {
+    -fx-font-size: 13.5px;
+}
+
+.md-marker {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 13px;
+    -fx-padding: 1 0 0 0;
+}
+
+.md-quote {
+    -fx-background-color: -app-surface-2;
+    -fx-background-radius: 0 8 8 0;
+    -fx-border-color: -app-accent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.md-divider {
+    -fx-background-color: -app-border-strong;
+}
+
+/* 代码块：语言标签 + 复制按钮 + 等宽只读 TextArea */
+.md-code-card {
+    -fx-background-color: -app-code-bg;
+    -fx-background-radius: 9px;
+    -fx-border-color: -app-border;
+    -fx-border-radius: 9px;
+}
+
+.md-code-header {
+    -fx-padding: 3 6 3 12;
+    -fx-background-color: -app-surface-2;
+    -fx-background-radius: 9 9 0 0;
+    -fx-border-color: transparent transparent -app-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.md-code-lang {
+    -fx-text-fill: -app-muted;
+    -fx-font-family: "Consolas", "Cascadia Mono", monospace;
+    -fx-font-size: 11px;
+}
+
+.md-copy-button {
+    -fx-background-color: transparent;
+    -fx-padding: 4;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.md-copy-button:hover {
+    -fx-background-color: -app-accent-soft;
+}
+
+.md-copy-button .svg-icon {
+    -fx-fill: -app-muted;
+}
+
+.md-copy-button:hover .svg-icon {
+    -fx-fill: -app-accent;
+}
+
+.md-code {
+    -fx-font-family: "Consolas", "Cascadia Mono", monospace;
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -app-text;
+    -fx-control-inner-background: -app-code-bg;
+    -fx-background-color: -app-code-bg;
+    -fx-background-radius: 0 0 9 9;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 2 4 4 6;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.md-code .content,
+.md-code .scroll-pane,
+.md-code .scroll-pane .viewport {
+    -fx-background-color: -app-code-bg;
+}
+
+/* 表格 */
+.md-table-scroll,
+.md-table-scroll .viewport {
+    -fx-background-color: transparent;
+}
+
+.md-table-scroll {
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background: transparent;
+}
+
+.md-table {
+    -fx-border-color: -app-border;
+    -fx-border-width: 0 0 1 1;
+}
+
+.md-th {
+    -fx-background-color: -app-surface-2;
+    -fx-border-color: -app-border;
+    -fx-border-width: 0 1 1 0;
+}
+
+.md-td {
+    -fx-background-color: -app-surface;
+    -fx-border-color: -app-border;
+    -fx-border-width: 0 1 1 0;
+}
+
+.md-td-alt {
+    -fx-background-color: -app-surface-2;
+}

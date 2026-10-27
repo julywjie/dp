@@ -1,0 +1,481 @@
+/* ==========================================================================
+   DP Agent — AI 热榜（发现页）
+   ========================================================================== */
+
+.discover-root {
+    -fx-background-color:
+        radial-gradient(center 50% 0%, radius 72%, -app-glow, transparent),
+        linear-gradient(to bottom, -app-chat-top, -app-chat-bottom);
+}
+
+.discover-header {
+    -fx-padding: 20 24 8 24;
+}
+
+.discover-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.discover-subtitle {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 12px;
+}
+
+.discover-list {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 6 0;
+}
+
+.discover-list .virtual-flow,
+.discover-list .clipped-container,
+.discover-list .sheet {
+    -fx-background-color: transparent;
+}
+
+.discover-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 4 20;
+}
+
+.discover-list .list-cell:filled:hover,
+.discover-list .list-cell:filled:selected {
+    -fx-background-color: transparent;
+}
+
+.article-cell {
+    -fx-background-color: linear-gradient(to bottom right, -app-surface, -app-surface-2);
+    -fx-background-radius: 12px;
+    -fx-border-color: -app-border;
+    -fx-border-radius: 12px;
+    -fx-padding: 10 14 10 14;
+    -fx-cursor: hand;
+}
+
+.article-cell.hn {
+    -fx-border-color: -app-border -app-border -app-border #f97316;
+    -fx-border-width: 1 1 1 3;
+}
+
+.article-cell.hf {
+    -fx-border-color: -app-border -app-border -app-border #eab308;
+    -fx-border-width: 1 1 1 3;
+}
+
+.article-cell.cn {
+    -fx-border-color: -app-border -app-border -app-border -app-accent;
+    -fx-border-width: 1 1 1 3;
+}
+
+.discover-list .list-cell:filled:hover .article-cell {
+    -fx-translate-y: -1px;
+    -fx-border-color: -app-border-strong;
+    -fx-effect: dropshadow(gaussian, -app-shadow-strong, 10, 0.06, 0, 3);
+}
+
+.discover-list .list-cell:filled:hover .article-cell.hn {
+    -fx-border-color: -app-border-strong -app-border-strong -app-border-strong #fb923c;
+}
+
+.discover-list .list-cell:filled:hover .article-cell.hf {
+    -fx-border-color: -app-border-strong -app-border-strong -app-border-strong #facc15;
+}
+
+.discover-list .list-cell:filled:hover .article-cell.cn {
+    -fx-border-color: -app-border-strong -app-border-strong -app-border-strong -app-accent;
+}
+
+.discover-list:focused .list-cell:filled:selected .article-cell {
+    -fx-border-color: -app-accent;
+    -fx-border-width: 1.5;
+}
+
+.article-rank {
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+    -fx-alignment: center;
+    -fx-background-color: -app-surface-2;
+    -fx-background-radius: 999px;
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 12.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+}
+
+.article-rank.top {
+    -fx-background-color: -app-accent-soft;
+    -fx-text-fill: -app-accent;
+}
+
+.article-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.article-meta {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+}
+
+.article-summary-btn {
+    -fx-background-color: -app-surface-2;
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11px;
+    -fx-padding: 4 9 4 7;
+    -fx-min-width: 58px;
+    -fx-min-height: 24px;
+    -fx-max-height: 24px;
+    -fx-background-radius: 999px;
+    -fx-border-color: -app-border;
+    -fx-border-radius: 999px;
+    -fx-cursor: hand;
+    -fx-opacity: 0.82;
+}
+
+.article-summary-btn:hover,
+.discover-list .list-cell:filled:hover .article-summary-btn {
+    -fx-opacity: 1;
+}
+
+.article-summary-btn:hover {
+    -fx-background-color: -app-accent-soft;
+    -fx-text-fill: -app-accent;
+    -fx-border-color: transparent;
+}
+
+.article-summary-btn .svg-icon {
+    -fx-fill: -app-muted;
+}
+
+.article-summary-btn:hover .svg-icon {
+    -fx-fill: -app-accent;
+}
+
+.source-badge {
+    -fx-background-radius: 999px;
+    -fx-padding: 2 8 2 8;
+    -fx-font-size: 10.5px;
+    -fx-font-weight: bold;
+}
+
+.source-badge.hn {
+    -fx-background-color: rgba(249, 115, 22, 0.16);
+    -fx-text-fill: #f97316;
+}
+
+.source-badge.hf {
+    -fx-background-color: rgba(234, 179, 8, 0.16);
+    -fx-text-fill: #b7791f;
+}
+
+.theme-dark .source-badge.hn {
+    -fx-text-fill: #fb923c;
+}
+
+.theme-dark .source-badge.hf {
+    -fx-background-color: rgba(250, 204, 21, 0.14);
+    -fx-text-fill: #facc15;
+}
+
+.source-badge.cn {
+    -fx-background-color: -app-accent-soft;
+    -fx-text-fill: -app-accent;
+}
+
+.discover-section-header {
+    -fx-padding: 12 4 9 4;
+    -fx-border-color: transparent transparent -app-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.hot-section-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.hot-section-subtitle {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+}
+
+.section-count {
+    -fx-background-color: -app-surface-2;
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11px;
+    -fx-background-radius: 999px;
+    -fx-padding: 1 7 1 7;
+}
+
+.discover-placeholder {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 12.5px;
+}
+
+/* ---------- 发现页加载 / 空状态 ---------- */
+.discover-empty {
+    -fx-padding: 24;
+}
+
+.discover-empty-orb {
+    -fx-min-width: 46px;
+    -fx-min-height: 46px;
+    -fx-max-width: 46px;
+    -fx-max-height: 46px;
+    -fx-background-color: -app-accent-soft;
+    -fx-background-radius: 15px;
+}
+
+.discover-empty-orb .svg-icon {
+    -fx-fill: -app-accent;
+}
+
+.discover-placeholder-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.discover-spinner {
+    -fx-progress-color: -app-accent;
+}
+
+/* ---------- 内联 AI 总结卡 ---------- */
+.summary-card {
+    -fx-background-color: linear-gradient(to bottom right, -app-surface, -app-surface-2);
+    -fx-border-color: transparent transparent transparent -app-accent;
+    -fx-border-width: 0 0 0 3;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 12 16 14 16;
+    -fx-effect: dropshadow(gaussian, -app-shadow, 14, 0.05, 0, 3);
+}
+
+.summary-header {
+    -fx-border-color: transparent transparent -app-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 8 0;
+}
+
+.summary-card .md-strong {
+    -fx-fill: -app-accent;
+}
+
+.summary-orb {
+    -fx-min-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-width: 26px;
+    -fx-max-height: 26px;
+    -fx-background-color: -app-accent-soft;
+    -fx-background-radius: 8px;
+}
+
+.summary-orb .svg-icon {
+    -fx-fill: -app-accent;
+}
+
+.summary-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.summary-meta {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11px;
+}
+
+.summary-action {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-min-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-width: 24px;
+    -fx-max-height: 24px;
+    -fx-alignment: center;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.summary-action:hover {
+    -fx-background-color: -app-accent-soft;
+}
+
+.summary-action .svg-icon {
+    -fx-fill: -app-muted;
+}
+
+.summary-action:hover .svg-icon {
+    -fx-fill: -app-accent;
+}
+
+.summary-skeleton-line {
+    -fx-background-color: -app-border;
+    -fx-background-radius: 4px;
+    -fx-min-height: 8px;
+    -fx-max-height: 8px;
+}
+
+.summary-spinner {
+    -fx-progress-color: -app-accent;
+}
+
+.summary-error {
+    -fx-text-fill: -app-danger;
+    -fx-font-size: 12px;
+}
+
+.summary-badge {
+    -fx-background-color: rgba(245, 158, 11, 0.16);
+    -fx-text-fill: #b45309;
+    -fx-font-size: 10.5px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 999px;
+    -fx-padding: 2 7 2 7;
+}
+
+.theme-dark .summary-badge {
+    -fx-text-fill: #fbbf24;
+}
+
+.summary-note {
+    -fx-text-fill: #b45309;
+    -fx-font-size: 11px;
+}
+
+.theme-dark .summary-note {
+    -fx-text-fill: #fbbf24;
+}
+
+/* ---------- 文章加载遮罩 ---------- */
+.article-loading {
+    -fx-background-color: -app-bg;
+}
+
+.article-loading-title {
+    -fx-text-fill: -app-text;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.article-loading-hint {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+}
+
+.article-spinner {
+    -fx-progress-color: -app-accent;
+}
+
+.article-host {
+    -fx-text-fill: -app-faint;
+    -fx-font-size: 11px;
+}
+
+.discover-bottom {
+    -fx-padding: 6 24 14 24;
+}
+
+.discover-status {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11.5px;
+}
+
+.discover-footer {
+    -fx-text-fill: -app-faint;
+    -fx-font-size: 11px;
+}
+
+/* ---------- 文章选项卡（应用内 WebView） ---------- */
+.discover-tabs {
+    -fx-tab-min-height: 30px;
+    -fx-background-color: -app-bg;
+}
+
+.discover-tabs > .tab-header-area {
+    -fx-padding: 6 14 0 14;
+}
+
+.discover-tabs > .tab-header-area > .tab-header-background {
+    -fx-background-color: -app-surface;
+    -fx-border-color: transparent transparent -app-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab {
+    -fx-background-color: -app-surface-2;
+    -fx-background-radius: 9 9 0 0;
+    -fx-padding: 4 13 4 13;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab:selected {
+    -fx-background-color: -app-bg;
+    -fx-border-color: transparent transparent -app-accent transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab .tab-label {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 12px;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab:selected .tab-label {
+    -fx-text-fill: -app-text;
+    -fx-font-weight: bold;
+}
+
+.tab-pane.discover-tabs > .tab-content-area {
+    -fx-background-color: -app-bg;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab .tab-close-button {
+    -fx-background-color: -app-muted;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab:selected .tab-close-button {
+    -fx-background-color: -app-text;
+}
+
+.tab-pane.discover-tabs > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.article-page {
+    -fx-background-color: -app-bg;
+}
+
+.article-web {
+    -fx-background-color: -app-bg;
+}
+
+.article-toolbar {
+    -fx-padding: 5 10 5 10;
+    -fx-background-color: -app-surface;
+    -fx-border-color: transparent transparent -app-border transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+.article-nav {
+    -fx-min-width: 28px;
+    -fx-min-height: 28px;
+    -fx-max-width: 28px;
+    -fx-max-height: 28px;
+}
+
+.article-status {
+    -fx-text-fill: -app-muted;
+    -fx-font-size: 11px;
+    -fx-padding: 0 4 0 6;
+}
+
+.article-progress {
+    -fx-pref-height: 3px;
+    -fx-max-height: 3px;
+}
